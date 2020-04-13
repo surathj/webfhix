@@ -114,7 +114,7 @@ function getChannel(channel) {
       const playlistId = channel.contentDetails.relatedPlaylists.uploads;
       requestVideoPlaylist(playlistId);
     })
-    .catch(err => alert('No Channel By That Name'));
+    .catch(err => alert('No Channel By That Name: ', channel.snippet.title));
 }
 
 // Add commas to number
