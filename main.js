@@ -89,6 +89,8 @@ function getChannel(channel) {
       console.log(response);
       const channel = response.result.items[0];
 
+      console.log("channles from result items: ", response.result.items);
+
       const output = `
         <ul class="collection">
           <li class="collection-item">Title: ${channel.snippet.title}</li>
