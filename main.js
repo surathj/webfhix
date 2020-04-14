@@ -12,8 +12,8 @@ const channelForm = document.getElementById('channel-form');
 const channelInput = document.getElementById('channel-input');
 const videoContainer = document.getElementById('video-container');
 
-//const defaultChannel = 'techguyweb';
-const defaultChannel = 'UCglktuLV6GWCg5MHdTGQYDQ';
+const defaultChannel = 'techguyweb';
+//const defaultChannel = 'UCglktuLV6GWCg5MHdTGQYDQ';
 
 // Form submit and change channel
 // channelForm.addEventListener('submit', e => {
@@ -84,11 +84,11 @@ function getChannel(channel) {
   gapi.client.youtube.channels
     .list({
       part: 'snippet,contentDetails,statistics',
-      id: channel
-      //forUsername: channel
+      //id: channel
+      forUsername: channel
     })
     .then(response => {
-      console.log(response);
+      console.log("whole response: ", response);
       const channel = response.result.items[0];
 
       const output = `
@@ -107,13 +107,13 @@ function getChannel(channel) {
         </ul>
         <p>${channel.snippet.description}</p>
         <hr>
-        <a class="btn grey darken-2" target="_blank" href="https://youtube.com/${
+        <a class="btn grey dark" target="_blank" href="https://youtube.com/${
         channel.snippet.customUrl
         }">Visit Channel</a>
       `;
       showChannelData(output);
 
-      console.log("related playlists: ", channel.contentDetails.relatedPlaylists)
+      console.log("channel: ", channel)
 
       const playlistId = channel.contentDetails.relatedPlaylists.uploads;
       requestVideoPlaylist(playlistId);
