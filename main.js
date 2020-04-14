@@ -140,7 +140,6 @@ function getPlaylists() {
       let output = '<br><h4 class="center-align">Packages</h4>';
       output += "<ul>"
       playlists.forEach(item => {
-        const videoId = item.snippet.resourceId.videoId;
 
         output += `
           <li class="col s3">
