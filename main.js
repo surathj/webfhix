@@ -133,7 +133,9 @@ function getPlaylists() {
   const request = gapi.client.youtube.playlists.list(requestOptions);
 
   request.execute(response => {
-    console.log("Response Playlists", response);
+    //console.log("Response Playlists", response);
+    playlists = response.items;
+    console.log("items: ", playlists);
   });
 
   /*return gapi.client.youtube.playlists.list({
