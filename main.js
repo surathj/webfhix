@@ -10,6 +10,8 @@ const signoutButton = document.getElementById('signout-button');
 const content = document.getElementById('content');
 const channelForm = document.getElementById('channel-form');
 const channelInput = document.getElementById('channel-input');
+
+const playlistContainer = document.getElementById('playlist-container');
 const videoContainer = document.getElementById('video-container');
 
 //const defaultChannel = 'techguyweb';
@@ -81,7 +83,6 @@ function showChannelData(data) {
 
 // Get channel from API
 function getChannel(channel) {
-  getPlaylists();
   gapi.client.youtube.channels
     .list({
       part: 'snippet,contentDetails,statistics',
@@ -124,7 +125,18 @@ function getChannel(channel) {
 
 // get all playlists
 function getPlaylists() {
-  return gapi.client.youtube.playlists.list({
+  const requestOptions = {
+    part: "snippet",
+    mine: true
+  };
+
+  const request = gapi.client.youtube.playlists.list(requestOptions);
+
+  request.execute(response => {
+    console.log("Response Playlists", response);
+  });
+
+  /*return gapi.client.youtube.playlists.list({
     part: "snippet",
     mine: true
   })
@@ -132,7 +144,7 @@ function getPlaylists() {
       // Handle the results here (response.result has the parsed body).
       console.log("Response Playlists", response);
     },
-      function (err) { console.error("Execute error", err); });
+      function (err) { console.error("Execute error", err); });*/
 }
 
 // Add commas to number
@@ -141,6 +153,7 @@ function numberWithCommas(x) {
 }
 
 function requestVideoPlaylist(playlistId) {
+  getPlaylists();
   const requestOptions = {
     playlistId: playlistId,
     part: 'snippet',
