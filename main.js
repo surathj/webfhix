@@ -12,7 +12,8 @@ const channelForm = document.getElementById('channel-form');
 const channelInput = document.getElementById('channel-input');
 const videoContainer = document.getElementById('video-container');
 
-const defaultChannel = 'techguyweb';
+//const defaultChannel = 'techguyweb';
+const defaultChannel = 'UCglktuLV6GWCg5MHdTGQYDQ';
 
 // Form submit and change channel
 // channelForm.addEventListener('submit', e => {
@@ -83,7 +84,8 @@ function getChannel(channel) {
   gapi.client.youtube.channels
     .list({
       part: 'snippet,contentDetails,statistics',
-      forUsername: channel
+      id: channel
+      //forUsername: channel
     })
     .then(response => {
       console.log(response);
