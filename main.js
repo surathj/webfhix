@@ -126,8 +126,7 @@ function getChannel(channel) {
 function getPlaylists() {
   return gapi.client.youtube.playlists.list({
     part: "snippet",
-    channelID: defaultChannel,
-    mine: false
+    mine: true
   })
     .then(function (response) {
       // Handle the results here (response.result has the parsed body).
