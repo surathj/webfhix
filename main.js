@@ -81,6 +81,7 @@ function showChannelData(data) {
 
 // Get channel from API
 function getChannel(channel) {
+  getPlaylists();
   gapi.client.youtube.channels
     .list({
       part: 'snippet,contentDetails,statistics',
@@ -119,6 +120,16 @@ function getChannel(channel) {
       requestVideoPlaylist(playlistId);
     })
     .catch(err => alert('No Channel By That Name'));
+}
+
+// get all playlists
+function getPlaylists() {
+  return gapi.client.youtube.playlists.list({})
+    .then(function (response) {
+      // Handle the results here (response.result has the parsed body).
+      console.log("Response Playlists", response);
+    },
+      function (err) { console.error("Execute error", err); });
 }
 
 // Add commas to number
