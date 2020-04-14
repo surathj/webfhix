@@ -15,13 +15,13 @@ const videoContainer = document.getElementById('video-container');
 const defaultChannel = 'techguyweb';
 
 // Form submit and change channel
-channelForm.addEventListener('submit', e => {
-  e.preventDefault();
+// channelForm.addEventListener('submit', e => {
+//   e.preventDefault();
 
-  const channel = channelInput.value;
+//   const channel = channelInput.value;
 
-  getChannel(channel);
-});
+//   getChannel(channel);
+// });
 
 // Load auth2 library
 function handleClientLoad() {
