@@ -136,6 +136,28 @@ function getPlaylists() {
     //console.log("Response Playlists", response);
     playlists = response.items;
     console.log("items: ", playlists);
+    if (playlists) {
+      let output = '<br><h4 class="center-align">Packages</h4>';
+      output += "<ul>"
+      playlists.forEach(item => {
+        const videoId = item.snippet.resourceId.videoId;
+
+        output += `
+          <li class="col s3">
+            <div>
+              <img width="100%" height="auto" src="${item.snippet.thumbnails.default.url}" />
+              <h4>${item.snippet.title}</h4>
+            </div>
+          </li>
+        `;
+      });
+
+      output += "</ul>"
+
+      playlistContainer.innerHTML = output
+    } else {
+      playlistContainer.innerHTML = "No packages available"
+    }
   });
 
   /*return gapi.client.youtube.playlists.list({
