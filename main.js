@@ -144,7 +144,7 @@ function getPlaylists() {
         output += `
           <li class="col s3">
             <div>
-              <img width="100%" height="auto" src="${item.snippet.thumbnails.default.url}" />
+              <img width="10%" height="10%" src="${item.snippet.thumbnails.default.url}" />
               <h4>${item.snippet.title}</h4>
             </div>
           </li>
