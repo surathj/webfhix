@@ -113,6 +113,8 @@ function getChannel(channel) {
       `;
       showChannelData(output);
 
+      console.log("related playlists: ", channel.contentDetails.relatedPlaylists)
+
       const playlistId = channel.contentDetails.relatedPlaylists.uploads;
       requestVideoPlaylist(playlistId);
     })
