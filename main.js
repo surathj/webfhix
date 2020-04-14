@@ -1,7 +1,8 @@
 // Options
 const CLIENT_ID = '201992105800-19qcbejlasbu6jcqmlqngqme11kpdebg.apps.googleusercontent.com';
 const DISCOVERY_DOCS = [
-  'https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest'
+  'https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest',
+  'https://www.googleapis.com/youtube/v3/playlists'
 ];
 const SCOPES = 'https://www.googleapis.com/auth/youtube.readonly';
 
@@ -12,7 +13,7 @@ const channelForm = document.getElementById('channel-form');
 const channelInput = document.getElementById('channel-input');
 const videoContainer = document.getElementById('video-container');
 
-const defaultChannel = 'thetechwebguy';
+const defaultChannel = 'UCglktuLV6GWCg5MHdTGQYDQ';
 
 // Form submit and change channel
 channelForm.addEventListener('submit', e => {
@@ -83,7 +84,8 @@ function getChannel(channel) {
   gapi.client.youtube.channels
     .list({
       part: 'snippet,contentDetails,statistics',
-      forUsername: channel
+      id: channel
+      //forUsername: channel
     })
     .then(response => {
       console.log(response);
