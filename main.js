@@ -12,7 +12,7 @@ const channelForm = document.getElementById('channel-form');
 const channelInput = document.getElementById('channel-input');
 const videoContainer = document.getElementById('video-container');
 
-const defaultChannel = 'thenewboston';
+const defaultChannel = 'thetechwebguy';
 
 // Form submit and change channel
 channelForm.addEventListener('submit', e => {
@@ -88,8 +88,6 @@ function getChannel(channel) {
     .then(response => {
       console.log(response);
       const channel = response.result.items[0];
-
-      console.log("channles from result items: ", response.result.items);
 
       const output = `
         <ul class="collection">
